@@ -1,0 +1,87 @@
+:root{
+  --bg:#f4f5fb; --card-bg:#ffffffcc; --text:#1e1f24; --muted:#6a6f7d;
+  --primary:#6f51d6; --primary-dark:#5b3ec7; --radius:18px;
+  --shadow:0 12px 30px rgba(0,0,0,.12); --focus:0 0 0 3px rgba(111,81,214,.25);
+  --field-h:52px; --font-lg:18px;
+}
+*{box-sizing:border-box} html,body{height:100%}
+body{margin:0; font-family:"Noto Sans Thai",system-ui,-apple-system,Segoe UI,Roboto,Arial; background:var(--bg);}
+.page{min-height:100dvh; display:grid; place-items:center; padding:24px}
+.card{
+  width:min(880px,94vw); background:var(--card-bg); backdrop-filter:blur(6px);
+  border-radius:var(--radius); box-shadow:var(--shadow);
+  border:1px solid rgba(255,255,255,.5); padding:22px 22px 18px;
+}
+.header{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:6px}
+.brand{display:flex; align-items:center; gap:10px}
+.brand img{width:44px;height:44px;border-radius:12px;object-fit:cover;box-shadow:0 6px 18px rgba(0,0,0,.12)}
+.title{margin:0; font-size:24px; font-weight:700}
+.actions{display:flex; gap:8px}
+.btn{height:44px; border-radius:12px; border:none; padding:0 16px; cursor:pointer; font-weight:700}
+.btn-primary{background:var(--primary); color:#fff}
+.btn-primary:hover{background:var(--primary-dark)}
+.btn-secondary{background:#eef; color:#3b318a}
+.btn-danger{background:#ef5350; color:#fff}
+.link{color:var(--primary); font-weight:700; text-decoration:none}
+
+.input, select, textarea{
+  width:100%; height:var(--field-h); border:2px solid #e6e8f1; border-radius:14px;
+  padding:12px 14px; font-size:var(--font-lg); background:#fff; outline:none; margin-bottom:10px
+}
+textarea{height:120px; resize:vertical}
+.input:focus, select:focus, textarea:focus{border-color:var(--primary); box-shadow:var(--focus)}
+.row{display:grid; grid-template-columns:repeat(12,1fr); gap:12px}
+.col-12{grid-column:span 12} .col-6{grid-column:span 6} .col-4{grid-column:span 4} .col-3{grid-column:span 3}
+@media (max-width:740px){ .col-6,.col-4,.col-3{grid-column:span 12} }
+
+.table{width:100%; border-collapse:separate; border-spacing:0 10px; margin-top:4px}
+.table thead th{font-size:14px; color:#5c5f6c; text-align:left; padding:0 10px}
+.table tbody tr{background:#fff; box-shadow:0 4px 14px rgba(0,0,0,.06)}
+.table td{padding:14px 10px}
+.empty{padding:16px; color:var(--muted); text-align:center}
+
+.toolbar{display:flex; gap:10px; align-items:center; margin:8px 0 12px}
+
+/* =========================
+   ป้ายหัวข้อแบบไม่ชนเฟรมเวิร์ก
+   ========================= */
+.topic-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 16px;
+  border-radius:14px;
+  background:#ece7ff;
+  color:#4b3bb4;
+  font-weight:700;
+  font-size:16px;
+  line-height:1.2;
+  border:1px solid #dcd6ff;
+  width:fit-content;
+  max-width:100%;
+  white-space:normal;     /* ถ้ายาว ยอมขึ้นบรรทัดใหม่ */
+}
+
+/* กล่องครอบหัวข้อ ถ้าต้องการระยะ */
+.section-title{ margin:8px 0 12px; }
+
+/* =========================
+   เผื่อโค้ดเดิมยังใช้ .badge (เช่นจาก Bootstrap)
+   บังคับแก้ทับให้เหมือนกัน
+   ========================= */
+.card .badge{
+  display:inline-flex !important;
+  align-items:center !important;
+  gap:8px !important;
+  padding:10px 16px !important;
+  border-radius:14px !important;
+  background:#ece7ff !important;
+  color:#4b3bb4 !important;
+  font-weight:700 !important;
+  font-size:16px !important;
+  line-height:1.2 !important;
+  border:1px solid #dcd6ff !important;
+  width:fit-content !important;
+  max-width:100% !important;
+  white-space:normal !important;
+}

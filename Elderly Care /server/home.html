@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <title>หน้าแรก | Elder Care</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./home.css" />
+</head>
+<body>
+  <div class="page">
+    <div class="home-card">
+      <div class="brand">
+        <img src="./images/logo.png" alt="Elder Care" onerror="this.style.display='none'"/>
+      </div>
+      <h1 class="title" id="welcome">ผู้ช่วยดูแลผู้สูงอายุ</h1>
+      <p class="subtitle">ยินดีต้อนรับสู่ระบบ Elderly Care</p>
+
+     <div class="menu">
+  <a href="./schedule.html" class="btn btn-primary">📅 ตารางนัดหมาย</a>
+  <a href="./meds.html" class="btn btn-primary">💊 การใช้ยา</a>
+  <a href="./health.html" class="btn btn-primary">📈 บันทึกสุขภาพ</a>
+  <a href="./alerts.html" class="btn btn-primary">🔔 การแจ้งเตือน</a>
+    </div>
+
+
+      <div class="footer">
+        <button class="btn btn-secondary" onclick="logout()">ออกจากระบบ</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ===== Auth guard: ไม่มี token → กลับหน้า login
+    const token = localStorage.getItem("token");
+    if (!token) {
+      window.location.href = "./login.html";
+    }
+
+    // ดึงข้อมูลผู้ใช้เพื่อต้อนรับ (และตรวจ token หมดอายุ)
+    async function loadMe(){
+      try{
+        const res = await fetch("./api/me", { headers: { Authorization: "Bearer " + token }});
+        if(!res.ok) throw new Error("unauthorized");
+        const { user } = await res.json();
+        const name = user?.name || user?.email || "ผู้ใช้งาน";
+        document.getElementById("welcome").textContent = "ยินดีต้อนรับ, " + name;
+      }catch(e){
+        localStorage.removeItem("token");
+        window.location.href = "./login.html";
+      }
+    }
+    loadMe();
+
+    function logout(){
+      localStorage.removeItem("token");
+      window.location.href = "./login.html";
+    }
+  </script>
+</body>
+</html>

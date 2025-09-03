@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>ตารางนัดหมาย | Elder Care</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./features.css">
+</head>
+<body>
+  <div class="page">
+    <div class="card">
+      <div class="header">
+        <div class="brand">
+          <img src="./images/logo.png" alt="logo" onerror="this.style.display='none'">
+          <h1 class="title">📅 ตารางนัดหมาย</h1>
+        </div>
+        <div class="actions">
+          <a class="btn btn-secondary" href="./home.html">หน้าแรก</a>
+          <button class="btn btn-danger" onclick="localStorage.removeItem('token');location.href='./login.html'">Log out</button>
+        </div>
+      </div>
+
+      <form id="schedule-form">
+        <input class="input" name="title" placeholder="หัวข้อนัดหมาย เช่น พบแพทย์อายุรกรรม">
+        <div class="row">
+          <div class="col-6"><input class="input" type="datetime-local" name="when"></div>
+          <div class="col-6"><input class="input" name="place" placeholder="สถานที่ (ไม่บังคับ)"></div>
+        </div>
+        <textarea name="note" class="input" placeholder="บันทึกเพิ่มเติม (ไม่บังคับ)"></textarea>
+        <input type="hidden" name="index" value="">
+        <button class="btn btn-primary" type="submit">บันทึกนัดหมาย</button>
+      </form>
+
+      <div class="toolbar"><span class="badge">รายการนัดหมาย</span></div>
+      <table class="table">
+        <thead><tr><th>หัวข้อ</th><th>วันเวลา</th><th>สถานที่</th><th>หมายเหตุ</th><th>จัดการ</th></tr></thead>
+        <tbody id="schedule-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- utils + module -->
+  <script src="./app.js".js"></script>
+  <script> scheduleInit(); </script>
+</body>
+</html>

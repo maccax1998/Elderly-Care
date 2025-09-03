@@ -1,0 +1,93 @@
+:root{
+  --bg: #f4f5fb;
+  --card-bg: #ffffffcc;
+  --text: #1e1f24;
+  --muted: #6a6f7d;
+  --primary: #6f51d6;
+  --primary-dark: #5b3ec7;
+  --secondary: #6c757d;
+  --radius: 18px;
+  --shadow: 0 12px 30px rgba(0,0,0,.12);
+  --focus: 0 0 0 3px rgba(111,81,214,.25);
+  --field-h: 52px;
+  --font-lg: 18px;
+}
+
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  font-family:"Noto Sans Thai", system-ui, sans-serif;
+  color:var(--text);
+  background: var(--bg) no-repeat center/cover fixed;
+  background-image: url("./images/elder-bg.jpg");
+}
+
+.page{
+  min-height:100dvh;
+  display:grid;
+  place-items:center;
+  padding:24px;
+}
+
+.home-card{
+  width:min(600px,92vw);
+  background:var(--card-bg);
+  backdrop-filter: blur(6px);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:28px 28px 32px;
+  border:1px solid rgba(255,255,255,.5);
+  text-align:center;
+}
+
+.brand img{
+  width:64px; height:64px; border-radius:14px; object-fit:cover;
+  box-shadow:0 6px 18px rgba(0,0,0,.12);
+  margin-bottom:8px;
+}
+
+.title{
+  margin:0;
+  font-size:28px;
+  font-weight:700;
+}
+.subtitle{
+  margin:6px 0 20px;
+  font-size:18px;
+  color:var(--muted);
+}
+
+.menu{
+  display:grid;
+  gap:12px;
+  margin-bottom:20px;
+}
+
+.btn{
+  display:block;
+  text-align:center;
+  height:calc(var(--field-h) + 4px);
+  border-radius:14px;
+  border:none;
+  cursor:pointer;
+  font-size:20px;
+  font-weight:700;
+  letter-spacing:.3px;
+  text-decoration:none;
+  line-height:calc(var(--field-h) + 4px);
+}
+
+.btn-primary{
+  background:var(--primary);
+  color:#fff;
+}
+.btn-primary:hover{ background:var(--primary-dark); }
+
+.btn-secondary{
+  background:var(--secondary);
+  color:#fff;
+}
+.btn-secondary:hover{ background:#555; }
+
+.footer{ margin-top:10px; }

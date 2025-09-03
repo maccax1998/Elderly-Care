@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>บันทึกสุขภาพ | Elder Care</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./features.css">
+</head>
+<body>
+  <div class="page">
+    <div class="card">
+      <div class="header">
+        <div class="brand">
+          <img src="./images/logo.png" alt="logo" onerror="this.style.display='none'">
+          <h1 class="title">📈 บันทึกสุขภาพ</h1>
+        </div>
+        <div class="actions">
+          <a class="btn btn-secondary" href="./home.html">หน้าแรก</a>
+          <button class="btn btn-danger" onclick="localStorage.removeItem('token');location.href='./login.html'">Log out</button>
+        </div>
+      </div>
+
+      <form id="health-form">
+        <div class="row">
+          <div class="col-6"><input class="input" type="datetime-local" name="dt"></div>
+          <div class="col-6">
+            <select class="input" name="mood">
+              <option value="ปกติ">อารมณ์: ปกติ</option>
+              <option value="ดี">อารมณ์: ดี</option>
+              <option value="เครียด">อารมณ์: เครียด</option>
+              <option value="เศร้า">อารมณ์: เศร้า</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-3"><input class="input" name="bp" placeholder="ความดัน (เช่น 120/80)"></div>
+          <div class="col-3"><input class="input" name="hr" placeholder="ชีพจร (bpm)"></div>
+          <div class="col-3"><input class="input" name="weight" placeholder="น้ำหนัก (กก.)"></div>
+          <div class="col-3"><input class="input" name="temp" placeholder="อุณหภูมิ (°C)"></div>
+        </div>
+        <textarea class="input" name="note" placeholder="บันทึกเพิ่มเติม (ไม่บังคับ)"></textarea>
+        <button class="btn btn-primary" type="submit">บันทึกข้อมูลสุขภาพ</button>
+      </form>
+
+      <div class="toolbar"><span class="badge">รายการบันทึกล่าสุด</span></div>
+      <table class="table">
+        <thead>
+          <tr><th>วันเวลา</th><th>ความดัน</th><th>ชีพจร</th><th>น้ำหนัก</th><th>อุณหภูมิ</th><th>อารมณ์</th><th>จัดการ</th></tr>
+        </thead>
+        <tbody id="health-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="./app.js"></script>
+  <script> healthInit(); </script>
+</body>
+</html>
